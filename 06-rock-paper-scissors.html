@@ -29,8 +29,13 @@
       score.wins = 0;
       score.losses = 0; 
       score.ties = 0;
+      updateScoreElement();
       localStorage.removeItem('score');
     ">Reset Score</button>
+
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
 
     <script>
       const score = JSON.parse(localStorage.getItem('score')) || {
@@ -38,6 +43,8 @@
         losses: 0, 
         ties: 0,
       };
+
+      updateScoreElement();
 
       /*
       if (!score === null) {
@@ -91,9 +98,19 @@
         }
 
         localStorage.setItem('score', JSON.stringify(score));
+        
+        updateScoreElement();
+
+        document.querySelector('.js-result').innerHTML = result;
+
+        document.querySelector('js-moves').innerHTML = `You ${playerMove} - ${computerMove} Computer`
 
         alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+      }
+
+      function updateScoreElement() {
+        document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
       }
 
       function pickComputerMove() {
