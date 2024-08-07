@@ -14,6 +14,7 @@
     3. Update a score
     4. Display the result and score
     5. Add a style
+    6. Add autoplay option
     -->
     <button onclick="
       playGame('rock');
@@ -44,6 +45,10 @@
     updateScoreElement();
     localStorage.removeItem('score');
   " class="reset-score-button">Reset Score</button>
+
+    <button onclick="
+      autoPlay();
+    " class="auto-play-button">Auto Play</button>
 
     <script src="scripts/rock-paper-scissors.js"></script>
   </body>
